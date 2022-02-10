@@ -1,0 +1,59 @@
+@import "./app/assets/variables";
+body {
+  height: 100vh;
+  background-color: rgb(255, 247, 247);
+
+  #root {
+    height: 100%;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+  }
+}
+.error {
+  font-size: 11px;
+  color: #eb4949;
+}
+
+.app-content {
+  margin-top: 20px;
+
+  @media (min-width: $sm) {
+    margin-top: 24px;
+  }
+
+  @media (min-width: $md) {
+    margin-top: 32px;
+  }
+
+  @media (min-width: $xl) {
+    margin-top: 44px;
+  }
+
+  @media (min-width: $xxl) {
+    margin-top: 60px;
+  }
+}
+
+.app-container {
+  padding: 12px;
+
+  @media (min-width: $sm) {
+    padding: 16px;
+  }
+
+  @media (min-width: $md) {
+    padding: 20px;
+  }
+
+  @media (min-width: $xl) {
+    padding: 24px;
+  }
+
+  @media (min-width: $xxl) {
+    padding: 32px;
+  }
+}

@@ -1,0 +1,41 @@
+@import "../../../assets/variables";
+
+.basic-button {
+  width: 100%;
+  padding: 8px 20px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+  border: unset;
+  color: $black;
+  background: $btn-background;
+  cursor: pointer;
+  transition-delay: 0.1s;
+
+
+  &:hover {
+    // background-color: darken($btn-background, 5%);
+    background-color: $btn-background-hover;
+    color: #fff;
+    transition-delay: 0.1s;
+  }
+
+  &:focus {
+    background-color: darken($btn-background-hover, 10%);
+    color: #fff;
+    transition-delay: 0.1s;
+  }
+
+  @media (min-width: $sm) {
+    width: unset;
+  }
+
+  @media (min-width: $xl) {
+    padding: 12px 30px;
+
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

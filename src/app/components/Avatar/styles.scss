@@ -1,0 +1,21 @@
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 10px;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    background-color: rgb(86, 62, 241);
+
+    &--img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+}

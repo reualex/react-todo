@@ -1,0 +1,25 @@
+@import "../../assets/variables";
+
+.header {
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &--links {
+    display: flex;
+    align-items: center;
+
+    & li {
+      cursor: pointer;
+    }
+
+    & > li + li {
+      margin-left: 15px;
+    }
+  }
+}
+
+.active svg {
+  box-shadow: 0 0 3px 1px #33a0ff;
+}

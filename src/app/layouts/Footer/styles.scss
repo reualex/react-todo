@@ -1,0 +1,40 @@
+@import "../../assets/variables";
+
+.footer {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  margin-top: auto;
+  &--container {
+    max-width: 1920px;
+  }
+
+  &--agree-data {
+    display: flex;
+    flex-direction: column;
+
+    & li:not(:first-child) {
+      margin-top: 8px;
+      color: #fff;
+    }
+
+    @media (min-width: $md) {
+      flex-direction: row;
+      & li:not(:first-child) {
+        margin-left: 15px;
+        margin-top: 0;
+      }
+    }
+  }
+
+  &--link {
+    color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration-line: underline;
+
+    &:visited {
+      color: #fff;
+    }
+  }
+}
