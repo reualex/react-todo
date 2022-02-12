@@ -1,11 +1,21 @@
 import React from "react";
-import strings from "../../../../localization";
+import { useSelector } from "react-redux";
+import ColumnsList from "../../components/ColumnsList";
+
+import "./styles.scss";
 
 const Home = () => {
-  return (
-    <div>
-        <div>{strings.links.home}</div>
+  const columns = useSelector((state) =>  state.columns.columns);
 
+  return (
+    <div className="home">
+      {columns?.length ? (
+        <div className="home--content">
+          <ColumnsList list={columns} />
+        </div>
+      ) : (
+        <div>Error</div>
+      )}
     </div>
   );
 };

@@ -1,0 +1,108 @@
+.col-list {
+  display: flex;
+  overflow-x: scroll;
+  & > li {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    width: 200px;
+    min-width: 200px;
+    min-height: 400px;
+    max-height: 600px;
+    // overflow-y: scroll;
+    margin: 0 8px;
+    background-color: #ebecf0;
+    border-radius: 2px;
+  }
+  &--title {
+    display: flex;
+    position: relative;
+    min-height: 24px;
+    p {
+      display: block;
+      width: 100%;
+      height: max-content;
+      font-size: 16px;
+      font-weight: 700;
+      overflow-wrap: break-word;
+
+      cursor: pointer;
+    }
+  }
+
+  &--new-col {
+    height: max-content;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+
+    & > div:not(:first-child) {
+      margin-left: 8px;
+    }
+  }
+
+  &--setting {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    button {
+      padding: 2px 12px;
+      display: flex;
+      height: 14px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &--input-block {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: ". . .";
+    padding: 0;
+  }
+  &--input {
+    input {
+      padding: 2px 6px;
+    }
+  }
+
+  &--btn {
+    margin-left: 4px;
+
+    button {
+      padding: 2px 6px;
+    }
+  }
+
+  &--cards {
+    // margin-top: 20px;
+  }
+
+  &--footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+    position: relative;
+
+    hr {
+      width: 200px;
+      height: 1px;
+      position: absolute;
+      left: 50%;
+      top: -5px;
+      transform: translateX(-50%);
+      box-shadow: 0 -1px 6px #005eff85;
+    }
+  }
+
+  &--delete {
+    cursor: pointer;
+    svg:hover {
+      box-shadow: 0 0 3px 1px #33a0ff;
+    }
+  }
+}

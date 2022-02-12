@@ -7,9 +7,9 @@ import "./styles.scss";
 const BasicInput = ({ className, type, label, register, required, error }) => {
   const inputID = uuid();
   return (
-    <div className={`basic-input__container ${className}`}>
+    <div className={`auth-input__container ${className}`}>
       {label ? (
-        <label htmlFor={inputID} className="basic-input__label">
+        <label htmlFor={inputID} className="auth-input__label">
           {label}
         </label>
       ) : (
@@ -18,12 +18,12 @@ const BasicInput = ({ className, type, label, register, required, error }) => {
 
       <input
         id={inputID}
-        className="basic-input"
+        className="auth-input"
         type={type}
         {...register(label, { required })}
       />
       {error.isError ? (
-        <span className="error basic-input__error">{error.text}</span>
+        <span className="error auth-input__error">{error.text}</span>
       ) : (
         ""
       )}

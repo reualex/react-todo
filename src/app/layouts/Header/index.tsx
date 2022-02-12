@@ -63,6 +63,22 @@ const Header = (props) => {
 
   const lang = strings.getLanguage();
 
+  const languages = () => {
+    return (
+      <><li
+        className={lang === "en" ? " active" : ""}
+        onClick={() => props.changeLang("en")}
+      >
+        {en}
+      </li><li
+        className={lang === "ru" ? " active" : ""}
+        onClick={() => props.changeLang("ru")}
+      >
+          {ru}
+        </li></>
+    )
+  }
+
   const list = [
     { title: strings.links.profile, func: () => history("/profile") },
     { title: strings.links.logout, func: () => dispatch(fetchLogout()) },
@@ -80,18 +96,7 @@ const Header = (props) => {
         </ul>
         {isAuth ? (
           <ul className="header--links">
-            <li
-              className={lang === "en" ? " active" : ""}
-              onClick={() => props.changeLang("en")}
-            >
-              {en}
-            </li>
-            <li
-              className={lang === "ru" ? " active" : ""}
-              onClick={() => props.changeLang("ru")}
-            >
-              {ru}
-            </li>
+            {languages()}
             <li>
               <DropDownMenu list={list}>
                 <Avatar name={user.name} picture={user.picture} />
@@ -100,6 +105,7 @@ const Header = (props) => {
           </ul>
         ) : (
           <ul className="header--links">
+            {languages()}
             <li>
               <Link to="/sign-in">{strings.links.login}</Link>
             </li>

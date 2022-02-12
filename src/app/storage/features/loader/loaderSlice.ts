@@ -1,3 +1,4 @@
+import { fetchNewCol, fetchChangeCol, fetchDeleteCol, fetchAddTask } from './../../thunks/column';
 import { fetchLoginData } from "./../../thunks/user";
 import { fetchLogout } from "./../../thunks/user";
 import { createSlice } from "@reduxjs/toolkit";
@@ -31,6 +32,34 @@ export const loaderSlice = createSlice({
     });
     builder.addCase(fetchLogout.fulfilled, (state, action) => {
       state.loading = action.payload.loader;
+    });
+
+    builder.addCase(fetchNewCol.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchNewCol.fulfilled, (state, action) => {
+      state.loading = false;
+    });
+
+    builder.addCase(fetchChangeCol.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchChangeCol.fulfilled, (state, action) => {
+      state.loading = false;
+    });
+
+    builder.addCase(fetchDeleteCol.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchDeleteCol.fulfilled, (state, action) => {
+      state.loading = false;
+    });
+
+    builder.addCase(fetchAddTask.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchAddTask.fulfilled, (state, action) => {
+      state.loading = false;
     });
   },
 });

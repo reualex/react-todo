@@ -13,6 +13,8 @@ let strings = new LocalizedStrings({
       userAgreement: "User Agreement",
       personalData: "Consent to the processing of personal data",
     },
+    addNewCol: "add new column",
+    addNewTask: "add new task",
   },
   ru: {
     links: {
@@ -26,6 +28,8 @@ let strings = new LocalizedStrings({
       userAgreement: "Пользовательское соглашение",
       personalData: "Согласие на обработку персональных данных",
     },
+    addNewCol: "новая колонка",
+    addNewTask: "новая задача",
   },
 });
 

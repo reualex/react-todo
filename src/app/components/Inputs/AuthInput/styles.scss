@@ -1,8 +1,9 @@
 @import "../../../assets/variables";
 
-.basic-input {
+.auth-input {
+  margin-top: 8px;
   width: 100%;
-  padding: 8px 12px;
+  padding: 12px 16px;
   background: #ffffff;
   border: 2px solid #f3f3f3;
   font-style: normal;
@@ -26,6 +27,7 @@
   }
 
   &__container {
+    padding-bottom: 12px;
     position: relative;
   }
 

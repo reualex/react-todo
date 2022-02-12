@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchLoginData } from "../../storage/thunks/user";
 
-import BasicInput from "../../components/Inputs/BasicInput";
+import BasicInput from "../../components/Inputs/AuthInput";
 import BasicButton from "../../components/Buttons/BasicButton";
 
 import "./styles.scss";
@@ -57,7 +57,7 @@ const SignIn = () => {
         )}
 
         <BasicButton
-          className="auth-form__button"
+          class="auth-form__button"
           type="submit"
           onClick={handleSubmit(onSubmit)}
           text="Sign in"

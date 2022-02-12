@@ -12,20 +12,17 @@
   color: $black;
   background: $btn-background;
   cursor: pointer;
-  transition-delay: 0.1s;
 
 
   &:hover {
     // background-color: darken($btn-background, 5%);
     background-color: $btn-background-hover;
     color: #fff;
-    transition-delay: 0.1s;
   }
 
   &:focus {
     background-color: darken($btn-background-hover, 10%);
     color: #fff;
-    transition-delay: 0.1s;
   }
 
   @media (min-width: $sm) {

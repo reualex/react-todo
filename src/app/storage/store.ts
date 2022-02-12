@@ -1,3 +1,4 @@
+import columnsSlice from './features/columns/columnsSlider';
 import loaderSlice from './features/loader/loaderSlice';
 import { configureStore } from '@reduxjs/toolkit';
 import userSlice from './features/user/userSlice';
@@ -12,5 +13,6 @@ export const store = configureStore({
   reducer: {
     user: userSlice,
     loader: loaderSlice,
+    columns: columnsSlice,
   },
 });
