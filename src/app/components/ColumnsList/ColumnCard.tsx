@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDrag } from "react-dnd";
+import { useDrag, useDragLayer } from "react-dnd";
 
 import BasicInput from "../Inputs/BasicInput";
 import { useDispatch } from "react-redux";
@@ -32,12 +32,13 @@ const ColumnCard = (props: IProps) => {
     updatedAt: "",
   };
 
-  const [collected, drag, dragPreview] = useDrag(() => ({
+  const [collected, drag, dragPreview] = useDragLayer((monitor) => ({
     type: "COLUMN",
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-    item: { column: props.column, prevIndex: props.index },
+    // collect: () => ({
+    //   isDragging: !!monitor.isDragging(),
+    // }),
+    isDragging: monitor.isDragging(),
+    item: monitor.getItem(),
   }));
 
   const [showColumnInput, setShowColumnInput] = useState<boolean>(false);
