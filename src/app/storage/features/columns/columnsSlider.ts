@@ -3,6 +3,7 @@ import {
   fetchChangeCol,
   fetchDeleteCol,
   fetchDnDColumn,
+  fetchDnDTaskPosition,
   fetchNewCol,
 } from "./../../thunks/column";
 import { createSlice } from "@reduxjs/toolkit";
@@ -97,11 +98,35 @@ export const columnsSlice = createSlice({
       localStorage.setItem("columns", JSON.stringify(state.columns));
     });
 
-    // fetchDnDTask
+    // fetch order DnD Column
     builder.addCase(fetchDnDColumn.fulfilled, (state, action) => {
-      // console.log('DND SLIDER: ', action.payload)
-      state.columns = action.payload;
-      localStorage.setItem("columns", JSON.stringify(state.columns));
+      const options = action.payload;
+      localStorage.setItem(options.name, options.order);
+    });
+
+    // fetch order DnD Task
+    builder.addCase(fetchDnDTaskPosition.fulfilled, (state, action) => {
+      const data = action.payload;
+      console.log('data: ', data);
+      console.log('state: ', JSON.parse(JSON.stringify(state)))
+
+      const oldCol = JSON.parse(JSON.stringify(state.columns[data.idxFrom]));
+      const currentTask = oldCol.tasks[data.oldArrPosition];
+      // {...currentTask, id: }
+      oldCol.tasks.splice(data.oldArrPosition, 1);
+      state.columns.splice(data.idxFrom, 1, oldCol);
+
+      const newCol = JSON.parse(JSON.stringify(state.columns[data.idxTo]));
+
+      currentTask.columnId = newCol.id;
+      console.log('currentTask: ', currentTask);
+
+      newCol.tasks.splice(data.newArrPosition, 1, currentTask);
+      state.columns.splice(data.idxTo, 1, newCol);
+
+
+      // localStorage.setItem("columns", JSON.stringify(state.columns));
+
     });
   },
 });

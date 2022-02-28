@@ -1,22 +1,40 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect, useRef } from "react";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
+import { useSelector, useDispatch } from "react-redux";
+import { useDrop } from "react-dnd";
 
 import ColumnCard from "./ColumnCard";
 import BasicButton from "../../components/Buttons/BasicButton";
 import BasicInput from "../../components/Inputs/BasicInput";
 import "./styles.scss";
 import { fetchDnDColumn, fetchNewCol } from "../../storage/thunks/column";
+
 import uuid from "react-uuid";
 
 import strings from "../../../../localization";
-
-// import { Draggable } from "react-beautiful-dnd";
+import ColumnsList from "./ColumnsList";
 
 interface IProps {
   list: IColumn[];
 }
 
-const ColumnsList = (props: IProps) => {
+const DnDContainerColumnsList = (props: IProps) => {
+  // const colList = useRef();
+  // const [, drop] = useDrop(
+  //   () => ({
+  //     accept: 'COLUMN',
+  //     drop(item) {
+  //       console.log("item: ", item);
+  //     },
+  //   }),
+  //   []
+  // );
+
+  // const [collectedProps, drop] = useDrop(() => ({
+  //   accept: "column",
+  // }));
+
   const [showInput, setShowInput] = useState<boolean>(false);
   const [newColTitle, setNewColTitle] = useState<string>("");
 
@@ -36,41 +54,16 @@ const ColumnsList = (props: IProps) => {
     }
   };
 
-  const onDragEnd = (result) => {
-    // the only one that is required
-    if (!result.destination) {
-      return;
-    }
-
-    if (result.destination.index === result.source.index) {
-      return;
-    }
-
-    const res = reorder(
-      props.list,
-      result.source.index,
-      result.destination.index
-    );
-    dispatch(fetchDnDColumn(res));
-  };
-
-  const reorder = (list, startIndex, endIndex) => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-
-    return result;
-  };
-
   return (
     <div>
-            <div>
-              <ul className="col-list">
-                {props.list.map((col, index) => {
-                  return <ColumnCard column={col} index={index} />;
-                })}
-              </ul>
-            </div>
+      <DndProvider backend={HTML5Backend}>
+        {/* <ul id="columns" className="col-list">
+          {props.list.map((col, index) => {
+            return <ColumnCard column={col} index={index} />;
+          })}
+        </ul> */}
+        <ColumnsList list={props.list} />
+        </DndProvider>
       {showInput ? (
         <div className="col-list--new-col">
           <BasicInput value={newColTitle} onChange={(v) => setNewColTitle(v)} />
@@ -90,4 +83,4 @@ const ColumnsList = (props: IProps) => {
   );
 };
 
-export default ColumnsList;
+export default DnDContainerColumnsList;
