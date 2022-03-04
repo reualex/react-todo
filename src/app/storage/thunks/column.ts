@@ -75,7 +75,7 @@ export const fetchDnDColumn: any = createAsyncThunk(
     return result;
   }
 );
-export const fetchDnDTaskPosition: any = createAsyncThunk(
+export const fetchDnDTask: any = createAsyncThunk(
   "task/DnDTask",
   async (data: any, thunkAPI: any) => {
     // request to back-end for set sort

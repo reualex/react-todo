@@ -1,5 +1,8 @@
 .home {
   &--content {
-    display: flex;
+    // display: flex;
+    .col-list--new-col {
+      margin-top: 20px;
+    }
   }
 }

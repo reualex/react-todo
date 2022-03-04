@@ -1,18 +1,23 @@
 .col-list {
   display: flex;
   overflow-x: scroll;
-  & > li {
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    width: 200px;
-    min-width: 200px;
-    min-height: 400px;
-    max-height: 600px;
-    // overflow-y: scroll;
-    margin: 0 8px;
-    background-color: #ebecf0;
-    border-radius: 2px;
+  & .sort-col {
+    &--body {
+      display: flex;
+      flex-direction: column;
+      padding: 8px;
+      width: 220px;
+      min-width: 220px;
+      height: 400px;
+      max-height: 400px;
+      margin: 0 8px;
+      background-color: #ebecf0;
+      border-radius: 2px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
   }
   &--title {
     display: flex;

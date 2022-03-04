@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
-import { useSelector, useDispatch } from "react-redux";
-import { useDrop } from "react-dnd";
+import { useDispatch } from "react-redux";
 
-import ColumnCard from "./ColumnCard";
-import BasicButton from "../../components/Buttons/BasicButton";
-import BasicInput from "../../components/Inputs/BasicInput";
+import BasicButton from "../Buttons/BasicButton";
+import BasicInput from "../Inputs/BasicInput";
 import "./styles.scss";
-import { fetchDnDColumn, fetchNewCol } from "../../storage/thunks/column";
+import { fetchNewCol } from "../../storage/thunks/column";
 
 import uuid from "react-uuid";
 
@@ -19,22 +17,7 @@ interface IProps {
   list: IColumn[];
 }
 
-const DnDContainerColumnsList = (props: IProps) => {
-  // const colList = useRef();
-  // const [, drop] = useDrop(
-  //   () => ({
-  //     accept: 'COLUMN',
-  //     drop(item) {
-  //       console.log("item: ", item);
-  //     },
-  //   }),
-  //   []
-  // );
-
-  // const [collectedProps, drop] = useDrop(() => ({
-  //   accept: "column",
-  // }));
-
+const ColumnListWrapper = (props: IProps) => {
   const [showInput, setShowInput] = useState<boolean>(false);
   const [newColTitle, setNewColTitle] = useState<string>("");
 
@@ -55,15 +38,10 @@ const DnDContainerColumnsList = (props: IProps) => {
   };
 
   return (
-    <div>
+    <>
       <DndProvider backend={HTML5Backend}>
-        {/* <ul id="columns" className="col-list">
-          {props.list.map((col, index) => {
-            return <ColumnCard column={col} index={index} />;
-          })}
-        </ul> */}
         <ColumnsList list={props.list} />
-        </DndProvider>
+      </DndProvider>
       {showInput ? (
         <div className="col-list--new-col">
           <BasicInput value={newColTitle} onChange={(v) => setNewColTitle(v)} />
@@ -79,8 +57,8 @@ const DnDContainerColumnsList = (props: IProps) => {
           />
         </div>
       )}
-    </div>
+    </>
   );
 };
 
-export default DnDContainerColumnsList;
+export default ColumnListWrapper;

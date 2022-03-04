@@ -3,7 +3,7 @@ import {
   fetchChangeCol,
   fetchDeleteCol,
   fetchDnDColumn,
-  fetchDnDTaskPosition,
+  fetchDnDTask,
   fetchNewCol,
 } from "./../../thunks/column";
 import { createSlice } from "@reduxjs/toolkit";
@@ -101,32 +101,28 @@ export const columnsSlice = createSlice({
     // fetch order DnD Column
     builder.addCase(fetchDnDColumn.fulfilled, (state, action) => {
       const options = action.payload;
-      localStorage.setItem(options.name, options.order);
+      const newColIdx = state.columns.findIndex(
+        (el) => el.id === options.newColId
+      );
+      const oldColIdx = state.columns.findIndex(
+        (el) => el.id === options.oldColId
+      );
+
+      const col = state.columns.splice(oldColIdx, 1)[0];
+      state.columns.splice(newColIdx, 0, col);
+      localStorage.setItem("columns", JSON.stringify(state.columns));
     });
 
     // fetch order DnD Task
-    builder.addCase(fetchDnDTaskPosition.fulfilled, (state, action) => {
+    builder.addCase(fetchDnDTask.fulfilled, (state, action) => {
       const data = action.payload;
-      console.log('data: ', data);
-      console.log('state: ', JSON.parse(JSON.stringify(state)))
-
-      const oldCol = JSON.parse(JSON.stringify(state.columns[data.idxFrom]));
-      const currentTask = oldCol.tasks[data.oldArrPosition];
-      // {...currentTask, id: }
-      oldCol.tasks.splice(data.oldArrPosition, 1);
-      state.columns.splice(data.idxFrom, 1, oldCol);
-
-      const newCol = JSON.parse(JSON.stringify(state.columns[data.idxTo]));
-
-      currentTask.columnId = newCol.id;
-      console.log('currentTask: ', currentTask);
-
-      newCol.tasks.splice(data.newArrPosition, 1, currentTask);
-      state.columns.splice(data.idxTo, 1, newCol);
-
+      if (data.type === "INSIDE") {
+        // console.log(" fetchDnDTask: ", data);
+      } else if (data.type === "OUTSIDE") {
+        // console.log(" not pass: ", data.type);
+      }
 
       // localStorage.setItem("columns", JSON.stringify(state.columns));
-
     });
   },
 });

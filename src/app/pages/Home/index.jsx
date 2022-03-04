@@ -1,10 +1,7 @@
 import React from "react";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { DndProvider } from "react-dnd";
-
 import { useSelector } from "react-redux";
 
-import DnDContainerColumnsList from "../../components/ColumnsList";
+import DnDContainerColumnsList from "../../components/ColumnsList/ColumnListWrapper";
 
 import "./styles.scss";
 
