@@ -13,7 +13,7 @@ const CardBody = (props: IProps) => {
           isDragging: monitor.isDragging(),
         }),
       }));
-    return <div ref={collected.isDragging ? dragPreview : drag}>{props.card.title}</div>
+    return <div ref={collected.isDragging ? dragPreview : drag} className="card">{props.card.title}</div>
 };
 
 export default CardBody;

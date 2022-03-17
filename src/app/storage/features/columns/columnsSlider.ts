@@ -4,6 +4,7 @@ import {
   fetchDeleteCol,
   fetchDnDColumn,
   fetchDnDTask,
+  fetchDnDTaskEmptyCol,
   fetchNewCol,
 } from "./../../thunks/column";
 import { createSlice } from "@reduxjs/toolkit";
@@ -116,11 +117,13 @@ export const columnsSlice = createSlice({
     // fetch order DnD Task
     builder.addCase(fetchDnDTask.fulfilled, (state, action) => {
       const data = action.payload;
-      if (data.type === "INSIDE") {
-        // console.log(" fetchDnDTask: ", data);
-      } else if (data.type === "OUTSIDE") {
-        // console.log(" not pass: ", data.type);
-      }
+      console.log("fetchDnDTask data: ", data);
+
+      // localStorage.setItem("columns", JSON.stringify(state.columns));
+    });
+    builder.addCase(fetchDnDTaskEmptyCol.fulfilled, (state, action) => {
+      const data = action.payload;
+      console.log("fetchDnDTaskEmptyCol data: ", data);
 
       // localStorage.setItem("columns", JSON.stringify(state.columns));
     });

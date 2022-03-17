@@ -40,17 +40,17 @@ const ColumnCard = (props: IProps) => {
     }),
   }));
 
-  const [, dropCard] = useDrop(
-    () => ({
-      accept: [dndTypes.CARD, dndTypes.CARD_INSIDE],
-      drop(item: any, monitor) {
-        console.log("monitor: ", monitor.getItemType());
-        console.log("item: ", item);
-        dispatch(fetchDnDTask({ item, type: "OUTSIDE" }));
-      },
-    }),
-    []
-  );
+  // const [, dropCard] = useDrop(
+  //   () => ({
+  //     accept: [dndTypes.CARD, dndTypes.CARD_INSIDE],
+  //     drop(item: any, monitor) {
+  //       console.log("monitor: ", monitor.getItemType());
+  //       console.log("item: ", item);
+  //       dispatch(fetchDnDTask({ item, type: "OUTSIDE" }));
+  //     },
+  //   }),
+  //   []
+  // );
 
   const [showColumnInput, setShowColumnInput] = useState<boolean>(false);
   const [showTaskInput, setShowTaskInput] = useState<boolean>(false);
@@ -128,9 +128,9 @@ const ColumnCard = (props: IProps) => {
           <p onClick={() => setShowColumnInput(true)}>{column.title}</p>
         )}
       </div>
-      <div ref={dropCard}>
+      {/* <div ref={dropCard}> */}
         <CardsList class="col-list--cards" list={column.tasks} index={index} />
-      </div>
+      {/* </div> */}
 
       <div className="col-list--footer">
         <hr />

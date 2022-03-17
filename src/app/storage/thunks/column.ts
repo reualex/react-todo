@@ -75,8 +75,24 @@ export const fetchDnDColumn: any = createAsyncThunk(
     return result;
   }
 );
+
+//fetchDnDTaskEmptyCol
 export const fetchDnDTask: any = createAsyncThunk(
   "task/DnDTask",
+  async (data: any, thunkAPI: any) => {
+    // request to back-end for set sort
+    let promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(data);
+      }, 0);
+    });
+
+    let result = await promise;
+    return result;
+  }
+);
+export const fetchDnDTaskEmptyCol: any = createAsyncThunk(
+  "task/DnDTaskEmptyCol",
   async (data: any, thunkAPI: any) => {
     // request to back-end for set sort
     let promise = new Promise((resolve, reject) => {
